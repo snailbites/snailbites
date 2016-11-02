@@ -1,9 +1,11 @@
 ---
+#Only add imports here from /_sass
 ---
 
-// Imports
-@import "base";
-@import "type";
-@import "layout";
+// core
+@import 'reset';
+@import 'variables';
+@import "highlights";
 
-// Themes
+// main
+@import "base";
