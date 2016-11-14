@@ -3,9 +3,12 @@
 ---
 
 // core
-@import 'reset';
+@import 'normalize';
 @import 'variables';
 @import "highlights";
+
+// type
+@import "typeplate/typeplate-index";
 
 // main
 @import "base";
