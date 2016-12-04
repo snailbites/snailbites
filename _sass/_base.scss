@@ -1,6 +1,17 @@
 body {
     padding: 20px;
 }
-h1, h2, h3, h4, h5, h6 {
-    & > a { text-decoration: none; }
+
+a {
+    text-decoration: none;
+    color: #B21B2D;
+}
+
+.hero {
+    margin: 5em 0;
+    text-align: center;
+}
+
+.post {
+    margin-bottom: 3em;
 }

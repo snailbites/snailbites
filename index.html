@@ -7,15 +7,15 @@ title: Welcome
 
 {% for post in site.posts %}
 
-<article class='post'>
-  <h1 class='post-title'>
+<article class="post">
+  <h4 class="post-title">
     <a href="{{ site.path }}{{ post.url }}">
       {{ post.title }}
     </a>
-  </h1>
-  <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
-    <p>{{ post.excerpt | strip_html }}</p>
-    <p><a href="{{ post.url }}">Read more...</a></p>
+  </h4>
+  <small class="post-date">{{ post.date | date: "%b %-d, %Y" }}</small>
+  <p>{{ post.excerpt | strip_html }} <a href="{{ post.url }}">&raquo;</a></p>
+
 </article>
 
 {% endfor %}
