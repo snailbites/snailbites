@@ -3,6 +3,7 @@ layout: default
 title: Welcome
 ---
 
+{% include hero.html %}
 
 {% for post in site.posts %}
 
@@ -13,7 +14,8 @@ title: Welcome
     </a>
   </h1>
   <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
-  {{ post.content }}
+    <p>{{ post.excerpt | strip_html }}</p>
+    <p><a href="{{ post.url }}">Read more...</a></p>
 </article>
 
 {% endfor %}

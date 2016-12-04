@@ -4,9 +4,9 @@ title:  "Wrangling Your CSS Into Submission"
 date:   2016-01-16 16:52:45 -0400
 categories: jekyll update
 ---
-Do you work on an enterprise system? Do you have a single page web app? Did you just go through a major redesign? Does re-styling a seemingly harmless little element tend to break other elements?
+Do you work on an enterprise system? Do you have a single page web app? Did you just go through a major redesign? Does re-styling a seemingly harmless little element tend to break other elements? If you answered “yes” to any of these questions, then this post is probably for you.
 
-If you answered “yes” to any of these questions, then this post is probably for you. Last summer at [GrubHub](http://about.grubhub.com/about-us/overview/default.aspx), we reached a major milestone in the company’s history: completing the consumer site’s first ever facelift. Because of business demands, this facelift was conceptualized and executed (design + research + build) in just *three months!*
+Last summer at [GrubHub](http://about.grubhub.com/about-us/overview/default.aspx), we reached a major milestone in the company’s history: completing the consumer site’s first ever facelift. Because of business demands, this facelift was conceptualized and executed (design + research + build) in just *three months!*
 
 After we celebrated our launch, we evaluated. We found that while the overall accomplishment was a huge success, the underlying code was a complete disaster. Because of the lack of any kind of process, most components were prototyped out in CodePen and then literally just dumped into the code base. Developers were given individual components and views to style, and they did so independently and in parallel. There was no thought given to scale or performance, only to meet the deadline.
 
