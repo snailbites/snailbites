@@ -4,11 +4,22 @@ body {
 
 a {
     text-decoration: none;
-    color: #B21B2D;
+    color: $BRAND_COLOR;
+}
+
+nav {
+
+}
+
+.logo {
+    text-transform: uppercase;
+    font: 24px/24px 'Fjalla One', sans-serif;
+    border-left: 12px solid $BRAND_COLOR;
+    padding: 4px 8px;
 }
 
 .hero {
-    margin: 5em 0;
+    margin: 4em 0;
     text-align: center;
 }
 
