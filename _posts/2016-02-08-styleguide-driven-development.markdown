@@ -16,7 +16,7 @@ I needed to get the file size down and get it to load faster. That was the ultim
 
 The answer, believe it or not, wasn't entirely obvious. I ended up talking to a designer on the team about his passion to create a pattern library and living style guide. He was already on the way to approach this from the design side. That's when it clicked with me that the pattern library was the solution to assembling reusable components in the markup. I found out from conversations with the designers, that not only was styling each little element differently a big problem on the code side, but it was just as big of a problem with design consistency on the design side.
 
-The designers kicked off the process by taking inventory of all of the existing features on the application(s) and grouping them into buckets based on the conventions found in http://patternlab.io/. After few sprints we had set of rules that we could build around. Our system was composed simply of mostly atoms, some molecules, and a few organisms that were rough sketches. The designer was able to take this into a rudimentary code phase, so the bare bones of HTML and CSS were set.
+The designers kicked off the process by taking inventory of all of the existing features on the application(s) and grouping them into buckets based on the conventions found in [Pattern Lab](http://patternlab.io/). After few sprints we had set of rules that we could build around. Our system was composed simply of mostly atoms, some molecules, and a few organisms that were rough sketches. The designer was able to take this into a rudimentary code phase, so the bare bones of HTML and CSS were set.
 
 Here's where the interesting engineering work began. Now that we had a static set of basic components, how do we then scale this into a robust, reusable component library that will automatically integrate into our gigantic consumer-site application?
 
@@ -32,11 +32,15 @@ First things first, we needed a living style guide that actually looked like som
 #### Bower
 Building on the scaffolding from Yeoman, we now had the seed of an application that we could plug into a git  repository. At that point, the next step was to use [Bower](http://bower.io) to add it as dependency in our main application. Our main consumer-site application was already wired up to bring in Bower dependencies. If you need more info doing that, then you can read up on bower *here*. All we had to do was add our style guide as a new dependency.
 
-![](/blog/content/images/2016/Feb/Screen-Shot-2016-02-07-at-6-03-18-PM.png)
+{% highlight json %}
+"dependencies": {
+    "base-css": "ssh://git@mycompany.com:1234/project/styleguide.git#0.3.26
+}
+{% endhighlight %}
 
 Now, whenever a build of GrubHub or Seamless was done, it would automatically get the latest version of our style guide from the git remote repo, and copy it into the codebase. From there, the Grunt build had a job that would copy the output of that repo into a folder for consumption.
 
-<img src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png" style="float: left; height: 65px; padding: 0 10px 10px 0;">
+<img src="https://cdn.worldvectorlogo.com/logos/gulp.svg" style="float: left; height: 100px; padding: 0 10px 10px 0;">
 #### Gulp
 We used gulp as our build tool because of its streaming capabilities. We set up our style guide to transpile, optimize, and then populate the distribution folder with assets. We chose to include an uncompressed and compressed version of a single .css file, as well as all necessary fonts. Consumers of the style guide can then choose which files they want to use at any given time.
 
@@ -69,7 +73,18 @@ For more on tagging, see: [Git - tagging](https://git-scm.com/book/en/v2/Git-Bas
 
 When the designers first organized the project, they did so around the  principals of [Pattern Lab](http://patternlab.io/). Coming into code, it was easy then to isolate things for release. We picked one atom at a time, starting with buttons, and isolated it for release. We did this by creating an alternate .scss file with only the bare minimum files included. This file included all of the base utility files (mixins, variables, maps, etc...), and then whatever atoms we wanted to release.
 
-![](/blog/content/images/2016/Feb/Screen-Shot-2016-02-07-at-7-43-04-PM.png)
+{% highlight scss %}
+
+// Utilities
+@import "variables";
+@import "flexbox";
+@import "mixins";
+@import "zindex";
+
+// Atoms
+@import "atoms/buttons/buttons";
+
+{% endhighlight %}
 
 As time went on, we added atom by atom, and then molecules and organisms, until the entire style guide was integrated. Integrating the style guide in this piecemeal fashion allowed us to control the release process and take our time with a thorough visual QA. It also gave us the freedom to clean out unused code as the styles were being replaced by the style guide. If your main application is enterprise level like ours, then I would strongly recommend this approach for you as well.
 
